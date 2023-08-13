@@ -1,0 +1,220 @@
+{
+    "version": "0.1.0",
+    "name": "well_nex",
+    "instructions": [
+        {
+            "name": "initializeUser",
+            "accounts": [
+                {
+                    "name": "authority",
+                    "isMut": true,
+                    "isSigner": true
+                },
+                {
+                    "name": "userProfile",
+                    "isMut": true,
+                    "isSigner": false
+                },
+                {
+                    "name": "systemProgram",
+                    "isMut": false,
+                    "isSigner": false
+                }
+            ],
+            "args": []
+        },
+        {
+            "name": "addPrescription",
+            "accounts": [
+                {
+                    "name": "userProfile",
+                    "isMut": true,
+                    "isSigner": false
+                },
+                {
+                    "name": "prescriptionAccount",
+                    "isMut": true,
+                    "isSigner": false
+                },
+                {
+                    "name": "authority",
+                    "isMut": true,
+                    "isSigner": true
+                },
+                {
+                    "name": "systemProgram",
+                    "isMut": false,
+                    "isSigner": false
+                }
+            ],
+            "args": [
+                {
+                    "name": "name",
+                    "type": "string"
+                },
+                {
+                    "name": "height",
+                    "type": "string"
+                },
+                {
+                    "name": "weight",
+                    "type": "string"
+                },
+                {
+                    "name": "disease",
+                    "type": "string"
+                },
+                {
+                    "name": "date",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "name": "markPrescription",
+            "accounts": [
+                {
+                    "name": "userProfile",
+                    "isMut": true,
+                    "isSigner": false
+                },
+                {
+                    "name": "prescriptionAccount",
+                    "isMut": true,
+                    "isSigner": false
+                },
+                {
+                    "name": "authority",
+                    "isMut": true,
+                    "isSigner": true
+                },
+                {
+                    "name": "systemProgram",
+                    "isMut": false,
+                    "isSigner": false
+                }
+            ],
+            "args": [
+                {
+                    "name": "prescriptionIdx",
+                    "type": "u8"
+                }
+            ]
+        },
+        {
+            "name": "deletePrescription",
+            "accounts": [
+                {
+                    "name": "userProfile",
+                    "isMut": true,
+                    "isSigner": false
+                },
+                {
+                    "name": "prescriptionAccount",
+                    "isMut": true,
+                    "isSigner": false
+                },
+                {
+                    "name": "authority",
+                    "isMut": true,
+                    "isSigner": true
+                },
+                {
+                    "name": "systemProgram",
+                    "isMut": false,
+                    "isSigner": false
+                }
+            ],
+            "args": [
+                {
+                    "name": "prescriptionIdx",
+                    "type": "u8"
+                }
+            ]
+        }
+    ],
+    "accounts": [
+        {
+            "name": "UserProfile",
+            "type": {
+                "kind": "struct",
+                "fields": [
+                    {
+                        "name": "authority",
+                        "type": "publicKey"
+                    },
+                    {
+                        "name": "lastPrescription",
+                        "type": "u8"
+                    },
+                    {
+                        "name": "prescriptionCount",
+                        "type": "u8"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "PrescriptionAccount",
+            "type": {
+                "kind": "struct",
+                "fields": [
+                    {
+                        "name": "authority",
+                        "type": "publicKey"
+                    },
+                    {
+                        "name": "idx",
+                        "type": "u8"
+                    },
+                    {
+                        "name": "name",
+                        "type": "string"
+                    },
+                    {
+                        "name": "height",
+                        "type": "string"
+                    },
+                    {
+                        "name": "weight",
+                        "type": "string"
+                    },
+                    {
+                        "name": "date",
+                        "type": "string"
+                    },
+                    {
+                        "name": "disease",
+                        "type": "string"
+                    },
+                    {
+                        "name": "marked",
+                        "type": "bool"
+                    }
+                ]
+            }
+        }
+    ],
+    "errors": [
+        {
+            "code": 6000,
+            "name": "Unauthorized",
+            "msg": "You are not authorized to perform this action."
+        },
+        {
+            "code": 6001,
+            "name": "NotAllowed",
+            "msg": "Not Allowed."
+        },
+        {
+            "code": 6002,
+            "name": "MathOverflow",
+            "msg": "Math operation overflow"
+        },
+        {
+            "code": 6003,
+            "name": "AlreadyMarked",
+            "msg": "Already marked."
+        }
+    ]
+}

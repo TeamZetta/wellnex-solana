@@ -11,4 +11,7 @@ router.route('/updateuser').put(controller.updateUser)
 router.route('/deleteuser').delete(controller.deleteUser)
 
 
+router.route('/startchain').get()
+
+
 export { router }

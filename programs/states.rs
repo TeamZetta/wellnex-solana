@@ -18,6 +18,5 @@ pub struct PrescriptionAccount {
     pub weight: String,
     pub date: String,
     pub disease: String,
-    pub medication: ,
     pub marked: bool,
 }
