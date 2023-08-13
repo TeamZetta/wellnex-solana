@@ -33,3 +33,33 @@ export async function getUser(req, res) {
         return res.status(500).json(err)
     }
 }
+
+export async function updateUser(req, res) {
+    const { email } = req.query
+
+    try {
+        const user = await User.findOneAndUpdate({ email },
+            {
+                $set: req.body
+            },
+            { new: true }
+        )
+        return res.status(200).json(user)
+    }
+    catch (err) {
+        return res.status(500).json(err)
+    }
+}
+
+
+export async function deleteUser(req, res) {
+    const { email } = req.query
+
+    try {
+        await User.findOneAndDelete({ email })
+        return res.status(200).json('Account deleted')
+    }
+    catch (err) {
+        return res.status(500).json(err)
+    }
+}
