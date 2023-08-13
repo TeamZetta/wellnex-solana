@@ -13,7 +13,7 @@ app.use(cors())
 app.use(express.json({ limit: '5mb' }))
 
 
-app.get('/', (req, res) => {
+app.get('/api/v1', (req, res) => {
     res.json('Hello from WellNex API')
 })
 
