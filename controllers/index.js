@@ -22,6 +22,19 @@ export async function authorizeUser(req, res) {
 }
 
 
+export async function getAllUsers(req, res) {
+    try {
+        const users = await User.find()
+
+        return res.status(200).json(users)
+    }
+    catch (err) {
+        return res.status(500).json(err)
+    }
+}
+
+
+
 export async function getUser(req, res) {
     const { email } = req.query
     try {
